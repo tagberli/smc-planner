@@ -7,7 +7,7 @@ import { useMemo, useState } from "react";
 import { findMajor, findTargetSchool, type Course } from "@/lib/requirements";
 
 type RequirementType = "major" | "ge";
-type Semester = "fall" | "spring";
+type Semester = "fall" | "winter" | "spring" | "summer";
 
 type PlannerCourse = Course & {
   id: string;
@@ -16,7 +16,9 @@ type PlannerCourse = Course & {
 
 const semesters: Array<{ key: Semester; label: string }> = [
   { key: "fall", label: "Fall" },
+  { key: "winter", label: "Winter" },
   { key: "spring", label: "Spring" },
+  { key: "summer", label: "Summer" },
 ];
 
 function buildCourseId(requirementType: RequirementType, course: Course, index: number) {
@@ -81,15 +83,26 @@ export function PlanClient() {
   const geCourses = courses.filter((course) => course.requirementType === "ge");
   const completedCourses = courses.filter((course) => completedCourseIds.has(course.id));
   const remainingCourses = courses.filter((course) => !completedCourseIds.has(course.id));
-  const plannedCourses = {
-    fall: remainingCourses.filter((course) => assignments[course.id] === "fall"),
-    spring: remainingCourses.filter((course) => assignments[course.id] === "spring"),
-  };
+  const plannedCourses = semesters.reduce(
+    (plans, semester) => ({
+      ...plans,
+      [semester.key]: remainingCourses.filter(
+        (course) => assignments[course.id] === semester.key,
+      ),
+    }),
+    {} as Record<Semester, PlannerCourse[]>,
+  );
 
-  const semesterUnits = {
-    fall: plannedCourses.fall.reduce((total, course) => total + course.units, 0),
-    spring: plannedCourses.spring.reduce((total, course) => total + course.units, 0),
-  };
+  const semesterUnits = semesters.reduce(
+    (totals, semester) => ({
+      ...totals,
+      [semester.key]: plannedCourses[semester.key].reduce(
+        (total, course) => total + course.units,
+        0,
+      ),
+    }),
+    {} as Record<Semester, number>,
+  );
 
   function toggleCompleted(courseId: string) {
     const shouldMarkCompleted = !completedCourseIds.has(courseId);
@@ -133,9 +146,12 @@ export function PlanClient() {
   function exportPlan() {
     const safeMajorName = major?.name ?? "Unknown Major";
     const safeSchoolName = targetSchool?.school ?? "Unknown School";
-    const fallCourses = plannedCourses.fall;
-    const springCourses = plannedCourses.spring;
     const unassignedCourses = remainingCourses.filter((course) => !assignments[course.id]);
+    const semesterSummaries = semesters.flatMap((semester) => [
+      `${semester.label} Plan (${semesterUnits[semester.key]} units):`,
+      courseListText(plannedCourses[semester.key]),
+      "",
+    ]);
 
     const summary = [
       "SMC Ed Planner Summary",
@@ -146,12 +162,7 @@ export function PlanClient() {
       "Completed Courses:",
       courseListText(completedCourses),
       "",
-      `Fall Plan (${semesterUnits.fall} units):`,
-      courseListText(fallCourses),
-      "",
-      `Spring Plan (${semesterUnits.spring} units):`,
-      courseListText(springCourses),
-      "",
+      ...semesterSummaries,
       "Unassigned Remaining Courses:",
       courseListText(unassignedCourses),
       "",
@@ -244,7 +255,7 @@ export function PlanClient() {
                 {remainingCourses.length} remaining
               </span>
             </div>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+            <div className="grid gap-4 sm:grid-cols-2">
               {semesters.map((semester) => (
                 <SemesterColumn
                   key={semester.key}
