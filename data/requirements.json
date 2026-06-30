@@ -4,14 +4,25 @@
       "name": "Computer Science",
       "targetSchools": [
         {
-          "school": "UCLA",
+          "school": "UCLA, CS B.S",
           "requiredCourses": [
             { "code": "CS 3", "title": "Introduction to Computer Systems", "units": 3, "category": "major" },
+            { "code": "CS 52", "title": "C++ Programming", "units": 3, "category": "major" },
+            { "code": "CS 17", "title": "Assembly Language Programming", "units": 3, "category": "major" },
+            { "code": "CS 42", "title": "Digital Logic", "units": 3, "category": "major" },
             { "code": "CS 20A", "title": "Data Structures with C++", "units": 3, "category": "major" },
             { "code": "CS 20B", "title": "Advanced Data Structures", "units": 3, "category": "major" },
+
             { "code": "MATH 7", "title": "Calculus 1", "units": 5, "category": "major" },
             { "code": "MATH 8", "title": "Calculus 2", "units": 5, "category": "major" },
-            { "code": "PHYSCS 21", "title": "Mechanics with Lab", "units": 5, "category": "major" }
+            { "code": "MATH 11", "title": "Calculus 3", "units": 5, "category": "major" },
+            { "code": "MATH 13", "title": "Linear Algebra", "units": 3, "category": "major" },
+            { "code": "MATH 15", "title": "Differential Equations", "units": 3, "category": "major" },
+            { "code": "MATH 10", "title": "Discrete Structures", "units": 3, "category": "major" },
+
+            { "code": "PHYSCS 21", "title": "Mechanics with Lab", "units": 5, "category": "major" },
+            { "code": "PHYSCS 22", "title": "Electricity and Magnetism with Lab", "units": 5, "category": "major" },
+            { "code": "PHYSCS 23", "title": "Fluids, Waves, Thermodynamics, Optics with Lab", "units": 5, "category": "major" }
           ],
           "geRequirements": [
             { "code": "IGETC 1A", "title": "English Composition", "units": 3 },
@@ -21,14 +32,18 @@
           ]
         },
         {
-          "school": "UCSD",
+          "school": "UCB, CS B.A",
           "requiredCourses": [
-            { "code": "CS 3", "title": "Introduction to Computer Systems", "units": 3, "category": "major" },
             { "code": "CS 20A", "title": "Data Structures with C++", "units": 3, "category": "major" },
-            { "code": "CS 50", "title": "Machine Language and Computer Organization", "units": 3, "category": "major" },
+            { "code": "CS 20B", "title": "Data Structures with Java", "units": 3, "category": "major" },
+
             { "code": "MATH 7", "title": "Calculus 1", "units": 5, "category": "major" },
             { "code": "MATH 8", "title": "Calculus 2", "units": 5, "category": "major" },
-            { "code": "MATH 15", "title": "Linear Algebra", "units": 3, "category": "major" }
+            { "code": "MATH 13", "title": "Linear Algebra", "units": 3, "category": "major" },
+            { "code": "MATH 15", "title": "Linear Algebra", "units": 3, "category": "major" },
+
+            { "code": "ENGR 21", "title": "Circuit Analysis", "units": 3, "category": "major" },
+            { "code": "ENGR 22", "title": "Circuit Analysis Lab", "units": 3, "category": "major" }
           ],
           "geRequirements": [
             { "code": "IGETC 1A", "title": "English Composition", "units": 3 },
