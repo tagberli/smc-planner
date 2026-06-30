@@ -4,16 +4,29 @@
     "ACCTG 2": { "title": "Corporate Financial and Managerial Accounting", "units": 5 },
     "BUS 1": { "title": "Introduction to Business", "units": 3 },
     "BUS 5": { "title": "Business Law", "units": 3 },
+
+    "BIOL 21": { "title": "Cell Biology and Evolution", "units": 4 },
+    "BIOL 22": { "title": "Genetics and Molecular Biology", "units": 4 },
+    "BIOL 23": { "title": "Organismal and Environmental Biology", "units": 3 },
+
     "CS 3": { "title": "Introduction to Computer Systems", "units": 3 },
     "CS 17": { "title": "Assembly Language Programming", "units": 3 },
     "CS 20A": { "title": "Data Structures with C++", "units": 3 },
     "CS 20B": { "title": "Advanced Data Structures", "units": 3 },
     "CS 42": { "title": "Digital Logic", "units": 3 },
     "CS 52": { "title": "C++ Programming", "units": 3 },
+
+    "ENGL C1000": { "title": "Academic Reading and Writing", "units": 3 },
+    "ENGL C1001": { "title": "Critical Thinking and Writing", "units": 3 },
+    
+
     "ECON 1": { "title": "Principles of Microeconomics", "units": 3 },
     "ECON 2": { "title": "Principles of Macroeconomics", "units": 3 },
+
+    "ENGR 11": { "title": "Engineering Graphics and Design", "units": 3 },
     "ENGR 21": { "title": "Circuit Analysis", "units": 3 },
-    "ENGR 22": { "title": "Circuit Analysis Lab", "units": 3 },
+    "ENGR 22": { "title": "Circuit Analysis Lab", "units": 1 },
+
     "IGETC 1A": { "title": "English Composition", "units": 3 },
     "IGETC 1B": { "title": "Critical Thinking", "units": 3 },
     "IGETC 1C": { "title": "Oral Communication", "units": 3 },
@@ -23,6 +36,7 @@
     "IGETC 4": { "title": "Social and Behavioral Science", "units": 3 },
     "IGETC 5A": { "title": "Physical Science", "units": 3 },
     "IGETC 5B": { "title": "Biological Science", "units": 3 },
+
     "MATH 7": { "title": "Calculus 1", "units": 5 },
     "MATH 8": { "title": "Calculus 2", "units": 5 },
     "MATH 10": { "title": "Discrete Structures", "units": 3 },
@@ -30,9 +44,24 @@
     "MATH 13": { "title": "Linear Algebra", "units": 3 },
     "MATH 15": { "title": "Differential Equations", "units": 3 },
     "MATH 54": { "title": "Elementary Statistics", "units": 4 },
+
+    "PHYS 3": {"title": "Human Physiology", "units": 4},
+
     "PHYSCS 21": { "title": "Mechanics with Lab", "units": 5 },
     "PHYSCS 22": { "title": "Electricity and Magnetism with Lab", "units": 5 },
-    "PHYSCS 23": { "title": "Fluids, Waves, Thermodynamics, Optics with Lab", "units": 5 }
+    "PHYSCS 23": { "title": "Fluids, Waves, Thermodynamics, Optics with Lab", "units": 5 },
+    "PHYSCS 24": { "title": "Modern Physics with Lab", "units": 3 },
+
+    "CHEM 11": { "title": "General Chemistry 1", "units": 5 },
+    "CHEM 12": { "title": "General Chemistry 2", "units": 5 },
+    "CHEM 21": { "title": "Organic Chemistry 1", "units": 5 },
+    "CHEM 22": { "title": "Organic Chemistry 2", "units": 4 },
+    "CHEM 24": { "title": "Organic Chemistry 2 Lab", "units": 2 }
+
+
+
+    
+
   },
   "majors": [
     {
@@ -70,6 +99,66 @@
             "MATH 15",
             "ENGR 21",
             "ENGR 22"
+          ],
+          "geRequirementCodes": ["IGETC 1A", "IGETC 2", "IGETC 3B", "IGETC 5A"]
+        }
+      ]
+    },
+    {
+      "name": "Mechanical Engineering",
+      "targetSchools": [
+        {
+          "school": "UCLA, B.S",
+          "requiredCourseCodes": [
+            "CHEM 11",
+            "CHEM 12",
+            
+            "CS 52",
+            "ENGR 22",
+
+            "MATH 7",
+            "MATH 8",
+            "MATH 11",
+            "MATH 13",
+
+            "ENGR 11",
+
+            "PHYSCS 21",
+            "PHYSCS 22",
+            "PHYSCS 23"
+
+          ],
+          "geRequirementCodes": ["IGETC 1A", "IGETC 1B", "IGETC 3A", "IGETC 4"]
+        },
+        {
+          "school": "UCB, B.S",
+          "requiredCourseCodes": [
+            "CHEM 11",
+            "CHEM 12",
+            "CHEM 21",
+            "CHEM 22",
+            "CHEM 24",
+
+            "MATH 7",
+            "MATH 8",
+            "MATH 11",
+            "MATH 13",
+            "MATH 15",
+
+            "PHYSCS 21",
+            "PHYSCS 22",
+            "PHYSCS 23",
+            "PHYSCS 24",
+
+            "PHYS 3",
+
+            "ENGL C1000",
+            "ENGL C1001",
+
+            "BIOL 21",
+            "BIOL 22",
+            "BIOL 23"
+
           ],
           "geRequirementCodes": ["IGETC 1A", "IGETC 2", "IGETC 3B", "IGETC 5A"]
         }
