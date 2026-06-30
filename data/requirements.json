@@ -1,0 +1,82 @@
+{
+  "majors": [
+    {
+      "name": "Computer Science",
+      "targetSchools": [
+        {
+          "school": "UCLA",
+          "requiredCourses": [
+            { "code": "CS 3", "title": "Introduction to Computer Systems", "units": 3, "category": "major" },
+            { "code": "CS 20A", "title": "Data Structures with C++", "units": 3, "category": "major" },
+            { "code": "CS 20B", "title": "Advanced Data Structures", "units": 3, "category": "major" },
+            { "code": "MATH 7", "title": "Calculus 1", "units": 5, "category": "major" },
+            { "code": "MATH 8", "title": "Calculus 2", "units": 5, "category": "major" },
+            { "code": "PHYSCS 21", "title": "Mechanics with Lab", "units": 5, "category": "major" }
+          ],
+          "geRequirements": [
+            { "code": "IGETC 1A", "title": "English Composition", "units": 3 },
+            { "code": "IGETC 1B", "title": "Critical Thinking", "units": 3 },
+            { "code": "IGETC 3A", "title": "Arts Requirement", "units": 3 },
+            { "code": "IGETC 4", "title": "Social and Behavioral Science", "units": 3 }
+          ]
+        },
+        {
+          "school": "UCSD",
+          "requiredCourses": [
+            { "code": "CS 3", "title": "Introduction to Computer Systems", "units": 3, "category": "major" },
+            { "code": "CS 20A", "title": "Data Structures with C++", "units": 3, "category": "major" },
+            { "code": "CS 50", "title": "Machine Language and Computer Organization", "units": 3, "category": "major" },
+            { "code": "MATH 7", "title": "Calculus 1", "units": 5, "category": "major" },
+            { "code": "MATH 8", "title": "Calculus 2", "units": 5, "category": "major" },
+            { "code": "MATH 15", "title": "Linear Algebra", "units": 3, "category": "major" }
+          ],
+          "geRequirements": [
+            { "code": "IGETC 1A", "title": "English Composition", "units": 3 },
+            { "code": "IGETC 2", "title": "Mathematical Concepts", "units": 3 },
+            { "code": "IGETC 3B", "title": "Humanities Requirement", "units": 3 },
+            { "code": "IGETC 5A", "title": "Physical Science", "units": 3 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Business Administration",
+      "targetSchools": [
+        {
+          "school": "UCLA",
+          "requiredCourses": [
+            { "code": "ACCTG 1", "title": "Introduction to Financial Accounting", "units": 5, "category": "major" },
+            { "code": "ACCTG 2", "title": "Corporate Financial and Managerial Accounting", "units": 5, "category": "major" },
+            { "code": "BUS 5", "title": "Business Law", "units": 3, "category": "major" },
+            { "code": "ECON 1", "title": "Principles of Microeconomics", "units": 3, "category": "major" },
+            { "code": "ECON 2", "title": "Principles of Macroeconomics", "units": 3, "category": "major" },
+            { "code": "MATH 54", "title": "Elementary Statistics", "units": 4, "category": "major" }
+          ],
+          "geRequirements": [
+            { "code": "IGETC 1A", "title": "English Composition", "units": 3 },
+            { "code": "IGETC 1C", "title": "Oral Communication", "units": 3 },
+            { "code": "IGETC 3A", "title": "Arts Requirement", "units": 3 },
+            { "code": "IGETC 4", "title": "Social and Behavioral Science", "units": 3 }
+          ]
+        },
+        {
+          "school": "UCSD",
+          "requiredCourses": [
+            { "code": "ACCTG 1", "title": "Introduction to Financial Accounting", "units": 5, "category": "major" },
+            { "code": "ACCTG 2", "title": "Corporate Financial and Managerial Accounting", "units": 5, "category": "major" },
+            { "code": "BUS 1", "title": "Introduction to Business", "units": 3, "category": "major" },
+            { "code": "ECON 1", "title": "Principles of Microeconomics", "units": 3, "category": "major" },
+            { "code": "ECON 2", "title": "Principles of Macroeconomics", "units": 3, "category": "major" },
+            { "code": "MATH 54", "title": "Elementary Statistics", "units": 4, "category": "major" }
+          ],
+          "geRequirements": [
+            { "code": "IGETC 1A", "title": "English Composition", "units": 3 },
+            { "code": "IGETC 1B", "title": "Critical Thinking", "units": 3 },
+            { "code": "IGETC 3B", "title": "Humanities Requirement", "units": 3 },
+            { "code": "IGETC 5B", "title": "Biological Science", "units": 3 }
+          ]
+        }
+      ]
+    }
+  ]
+}
