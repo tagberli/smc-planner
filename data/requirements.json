@@ -1,56 +1,77 @@
 {
+  "courseCatalog": {
+    "ACCTG 1": { "title": "Introduction to Financial Accounting", "units": 5 },
+    "ACCTG 2": { "title": "Corporate Financial and Managerial Accounting", "units": 5 },
+    "BUS 1": { "title": "Introduction to Business", "units": 3 },
+    "BUS 5": { "title": "Business Law", "units": 3 },
+    "CS 3": { "title": "Introduction to Computer Systems", "units": 3 },
+    "CS 17": { "title": "Assembly Language Programming", "units": 3 },
+    "CS 20A": { "title": "Data Structures with C++", "units": 3 },
+    "CS 20B": { "title": "Advanced Data Structures", "units": 3 },
+    "CS 42": { "title": "Digital Logic", "units": 3 },
+    "CS 52": { "title": "C++ Programming", "units": 3 },
+    "ECON 1": { "title": "Principles of Microeconomics", "units": 3 },
+    "ECON 2": { "title": "Principles of Macroeconomics", "units": 3 },
+    "ENGR 21": { "title": "Circuit Analysis", "units": 3 },
+    "ENGR 22": { "title": "Circuit Analysis Lab", "units": 3 },
+    "IGETC 1A": { "title": "English Composition", "units": 3 },
+    "IGETC 1B": { "title": "Critical Thinking", "units": 3 },
+    "IGETC 1C": { "title": "Oral Communication", "units": 3 },
+    "IGETC 2": { "title": "Mathematical Concepts", "units": 3 },
+    "IGETC 3A": { "title": "Arts Requirement", "units": 3 },
+    "IGETC 3B": { "title": "Humanities Requirement", "units": 3 },
+    "IGETC 4": { "title": "Social and Behavioral Science", "units": 3 },
+    "IGETC 5A": { "title": "Physical Science", "units": 3 },
+    "IGETC 5B": { "title": "Biological Science", "units": 3 },
+    "MATH 7": { "title": "Calculus 1", "units": 5 },
+    "MATH 8": { "title": "Calculus 2", "units": 5 },
+    "MATH 10": { "title": "Discrete Structures", "units": 3 },
+    "MATH 11": { "title": "Calculus 3", "units": 5 },
+    "MATH 13": { "title": "Linear Algebra", "units": 3 },
+    "MATH 15": { "title": "Differential Equations", "units": 3 },
+    "MATH 54": { "title": "Elementary Statistics", "units": 4 },
+    "PHYSCS 21": { "title": "Mechanics with Lab", "units": 5 },
+    "PHYSCS 22": { "title": "Electricity and Magnetism with Lab", "units": 5 },
+    "PHYSCS 23": { "title": "Fluids, Waves, Thermodynamics, Optics with Lab", "units": 5 }
+  },
   "majors": [
     {
       "name": "Computer Science",
       "targetSchools": [
         {
           "school": "UCLA, CS B.S",
-          "requiredCourses": [
-            { "code": "CS 3", "title": "Introduction to Computer Systems", "units": 3, "category": "major" },
-            { "code": "CS 52", "title": "C++ Programming", "units": 3, "category": "major" },
-            { "code": "CS 17", "title": "Assembly Language Programming", "units": 3, "category": "major" },
-            { "code": "CS 42", "title": "Digital Logic", "units": 3, "category": "major" },
-            { "code": "CS 20A", "title": "Data Structures with C++", "units": 3, "category": "major" },
-            { "code": "CS 20B", "title": "Advanced Data Structures", "units": 3, "category": "major" },
-
-            { "code": "MATH 7", "title": "Calculus 1", "units": 5, "category": "major" },
-            { "code": "MATH 8", "title": "Calculus 2", "units": 5, "category": "major" },
-            { "code": "MATH 11", "title": "Calculus 3", "units": 5, "category": "major" },
-            { "code": "MATH 13", "title": "Linear Algebra", "units": 3, "category": "major" },
-            { "code": "MATH 15", "title": "Differential Equations", "units": 3, "category": "major" },
-            { "code": "MATH 10", "title": "Discrete Structures", "units": 3, "category": "major" },
-
-            { "code": "PHYSCS 21", "title": "Mechanics with Lab", "units": 5, "category": "major" },
-            { "code": "PHYSCS 22", "title": "Electricity and Magnetism with Lab", "units": 5, "category": "major" },
-            { "code": "PHYSCS 23", "title": "Fluids, Waves, Thermodynamics, Optics with Lab", "units": 5, "category": "major" }
+          "requiredCourseCodes": [
+            "CS 3",
+            "CS 52",
+            "CS 17",
+            "CS 42",
+            "CS 20A",
+            "CS 20B",
+            "MATH 7",
+            "MATH 8",
+            "MATH 11",
+            "MATH 13",
+            "MATH 15",
+            "MATH 10",
+            "PHYSCS 21",
+            "PHYSCS 22",
+            "PHYSCS 23"
           ],
-          "geRequirements": [
-            { "code": "IGETC 1A", "title": "English Composition", "units": 3 },
-            { "code": "IGETC 1B", "title": "Critical Thinking", "units": 3 },
-            { "code": "IGETC 3A", "title": "Arts Requirement", "units": 3 },
-            { "code": "IGETC 4", "title": "Social and Behavioral Science", "units": 3 }
-          ]
+          "geRequirementCodes": ["IGETC 1A", "IGETC 1B", "IGETC 3A", "IGETC 4"]
         },
         {
           "school": "UCB, CS B.A",
-          "requiredCourses": [
-            { "code": "CS 20A", "title": "Data Structures with C++", "units": 3, "category": "major" },
-            { "code": "CS 20B", "title": "Data Structures with Java", "units": 3, "category": "major" },
-
-            { "code": "MATH 7", "title": "Calculus 1", "units": 5, "category": "major" },
-            { "code": "MATH 8", "title": "Calculus 2", "units": 5, "category": "major" },
-            { "code": "MATH 13", "title": "Linear Algebra", "units": 3, "category": "major" },
-            { "code": "MATH 15", "title": "Linear Algebra", "units": 3, "category": "major" },
-
-            { "code": "ENGR 21", "title": "Circuit Analysis", "units": 3, "category": "major" },
-            { "code": "ENGR 22", "title": "Circuit Analysis Lab", "units": 3, "category": "major" }
+          "requiredCourseCodes": [
+            "CS 20A",
+            "CS 20B",
+            "MATH 7",
+            "MATH 8",
+            "MATH 13",
+            "MATH 15",
+            "ENGR 21",
+            "ENGR 22"
           ],
-          "geRequirements": [
-            { "code": "IGETC 1A", "title": "English Composition", "units": 3 },
-            { "code": "IGETC 2", "title": "Mathematical Concepts", "units": 3 },
-            { "code": "IGETC 3B", "title": "Humanities Requirement", "units": 3 },
-            { "code": "IGETC 5A", "title": "Physical Science", "units": 3 }
-          ]
+          "geRequirementCodes": ["IGETC 1A", "IGETC 2", "IGETC 3B", "IGETC 5A"]
         }
       ]
     },
@@ -59,37 +80,27 @@
       "targetSchools": [
         {
           "school": "UCLA",
-          "requiredCourses": [
-            { "code": "ACCTG 1", "title": "Introduction to Financial Accounting", "units": 5, "category": "major" },
-            { "code": "ACCTG 2", "title": "Corporate Financial and Managerial Accounting", "units": 5, "category": "major" },
-            { "code": "BUS 5", "title": "Business Law", "units": 3, "category": "major" },
-            { "code": "ECON 1", "title": "Principles of Microeconomics", "units": 3, "category": "major" },
-            { "code": "ECON 2", "title": "Principles of Macroeconomics", "units": 3, "category": "major" },
-            { "code": "MATH 54", "title": "Elementary Statistics", "units": 4, "category": "major" }
+          "requiredCourseCodes": [
+            "ACCTG 1",
+            "ACCTG 2",
+            "BUS 5",
+            "ECON 1",
+            "ECON 2",
+            "MATH 54"
           ],
-          "geRequirements": [
-            { "code": "IGETC 1A", "title": "English Composition", "units": 3 },
-            { "code": "IGETC 1C", "title": "Oral Communication", "units": 3 },
-            { "code": "IGETC 3A", "title": "Arts Requirement", "units": 3 },
-            { "code": "IGETC 4", "title": "Social and Behavioral Science", "units": 3 }
-          ]
+          "geRequirementCodes": ["IGETC 1A", "IGETC 1C", "IGETC 3A", "IGETC 4"]
         },
         {
           "school": "UCSD",
-          "requiredCourses": [
-            { "code": "ACCTG 1", "title": "Introduction to Financial Accounting", "units": 5, "category": "major" },
-            { "code": "ACCTG 2", "title": "Corporate Financial and Managerial Accounting", "units": 5, "category": "major" },
-            { "code": "BUS 1", "title": "Introduction to Business", "units": 3, "category": "major" },
-            { "code": "ECON 1", "title": "Principles of Microeconomics", "units": 3, "category": "major" },
-            { "code": "ECON 2", "title": "Principles of Macroeconomics", "units": 3, "category": "major" },
-            { "code": "MATH 54", "title": "Elementary Statistics", "units": 4, "category": "major" }
+          "requiredCourseCodes": [
+            "ACCTG 1",
+            "ACCTG 2",
+            "BUS 1",
+            "ECON 1",
+            "ECON 2",
+            "MATH 54"
           ],
-          "geRequirements": [
-            { "code": "IGETC 1A", "title": "English Composition", "units": 3 },
-            { "code": "IGETC 1B", "title": "Critical Thinking", "units": 3 },
-            { "code": "IGETC 3B", "title": "Humanities Requirement", "units": 3 },
-            { "code": "IGETC 5B", "title": "Biological Science", "units": 3 }
-          ]
+          "geRequirementCodes": ["IGETC 1A", "IGETC 1B", "IGETC 3B", "IGETC 5B"]
         }
       ]
     }
