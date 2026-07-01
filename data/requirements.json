@@ -174,7 +174,8 @@
             "ECON 2",
             "MATH 7",
             "MATH 8"
-          ]
+          ],
+          "geRequirementCodes": ["IGETC 1A", "IGETC 1B", "IGETC 3B", "IGETC 5B"]
         },
         {
           "school": "UCB, Economics B.A.",
@@ -183,7 +184,8 @@
             "ECON 2",
             "MATH 7",
             "MATH 8"
-          ]
+          ],
+          "geRequirementCodes": ["IGETC 1A", "IGETC 1B", "IGETC 3B", "IGETC 5B"]
         }
       ]
     },
