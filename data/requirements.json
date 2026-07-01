@@ -165,6 +165,29 @@
       ]
     },
     {
+      "name": "Economics/B.A.",
+      "targetSchools": [
+        {
+          "school": "UCLA, Economics B.A.",
+          "requiredCourseCodes": [
+            "ECON 1",
+            "ECON 2",
+            "MATH 7",
+            "MATH 8"
+          ]
+        },
+        {
+          "school": "UCB, Economics B.A.",
+          "requiredCourseCodes": [
+            "ECON 1",
+            "ECON 2",
+            "MATH 7",
+            "MATH 8"
+          ]
+        }
+      ]
+    },
+    {
       "name": "Business Administration",
       "targetSchools": [
         {
