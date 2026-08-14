@@ -1,0 +1,1629 @@
+{
+  "meta": {
+    "sourceUrl": "https://catalog.smc.edu/current/cal-getc/",
+    "catalogYear": "2026-2027",
+    "verifiedOn": "2026-08-14",
+    "notes": "Area structure (course counts, unit minimums, group rules, overlap rules) is hand-transcribed from the published SMC Cal-GETC pattern. Eligible-course lists are imported by scripts/import-smc-catalog.ts from that same page, which is authoritative for area membership. Courses shown in parentheses on the page are no longer offered and are excluded."
+  },
+  "name": "Cal-GETC",
+  "areas": [
+    {
+      "id": "1A",
+      "label": "Area 1A — English Composition",
+      "requirement": {
+        "kind": "chooseN",
+        "label": "One course in English composition",
+        "n": 1,
+        "minUnits": 3,
+        "from": [
+          {
+            "kind": "course",
+            "code": "ENGL 1D"
+          },
+          {
+            "kind": "course",
+            "code": "ENGL C1000"
+          }
+        ]
+      }
+    },
+    {
+      "id": "1B",
+      "label": "Area 1B — Critical Thinking",
+      "requirement": {
+        "kind": "chooseN",
+        "label": "One course in critical thinking and composition",
+        "n": 1,
+        "minUnits": 3,
+        "from": [
+          {
+            "kind": "course",
+            "code": "ENGL C1001"
+          },
+          {
+            "kind": "course",
+            "code": "HIST 47"
+          }
+        ]
+      }
+    },
+    {
+      "id": "1C",
+      "label": "Area 1C — Oral Communication",
+      "requirement": {
+        "kind": "chooseN",
+        "label": "One course in oral communication",
+        "n": 1,
+        "minUnits": 3,
+        "from": [
+          {
+            "kind": "course",
+            "code": "COM ST 21"
+          },
+          {
+            "kind": "course",
+            "code": "COMM C1000"
+          }
+        ]
+      }
+    },
+    {
+      "id": "2",
+      "label": "Area 2 — Mathematical Concepts and Quantitative Reasoning",
+      "requirement": {
+        "kind": "chooseN",
+        "label": "One course in mathematical concepts and quantitative reasoning",
+        "n": 1,
+        "minUnits": 3,
+        "from": [
+          {
+            "kind": "course",
+            "code": "MATH 10"
+          },
+          {
+            "kind": "course",
+            "code": "MATH 11"
+          },
+          {
+            "kind": "course",
+            "code": "MATH 13"
+          },
+          {
+            "kind": "course",
+            "code": "MATH 15"
+          },
+          {
+            "kind": "course",
+            "code": "MATH 2"
+          },
+          {
+            "kind": "course",
+            "code": "MATH 21"
+          },
+          {
+            "kind": "course",
+            "code": "MATH 26"
+          },
+          {
+            "kind": "course",
+            "code": "MATH 28"
+          },
+          {
+            "kind": "course",
+            "code": "MATH 29"
+          },
+          {
+            "kind": "course",
+            "code": "MATH 4"
+          },
+          {
+            "kind": "course",
+            "code": "MATH 6"
+          },
+          {
+            "kind": "course",
+            "code": "MATH 7"
+          },
+          {
+            "kind": "course",
+            "code": "MATH 8"
+          },
+          {
+            "kind": "course",
+            "code": "STAT C1000"
+          }
+        ]
+      }
+    },
+    {
+      "id": "3",
+      "label": "Area 3 — Arts and Humanities",
+      "requirement": {
+        "kind": "all",
+        "label": "Two courses: one from Arts, one from Humanities",
+        "of": [
+          {
+            "kind": "chooseN",
+            "label": "Area 3A — one course in the arts",
+            "n": 1,
+            "minUnits": 3,
+            "from": [
+              {
+                "kind": "course",
+                "code": "AHIS 11"
+              },
+              {
+                "kind": "course",
+                "code": "AHIS 15"
+              },
+              {
+                "kind": "course",
+                "code": "AHIS 17"
+              },
+              {
+                "kind": "course",
+                "code": "AHIS 18"
+              },
+              {
+                "kind": "course",
+                "code": "AHIS 21"
+              },
+              {
+                "kind": "course",
+                "code": "AHIS 22"
+              },
+              {
+                "kind": "course",
+                "code": "AHIS 3"
+              },
+              {
+                "kind": "course",
+                "code": "AHIS 5"
+              },
+              {
+                "kind": "course",
+                "code": "AHIS 52"
+              },
+              {
+                "kind": "course",
+                "code": "AHIS 6"
+              },
+              {
+                "kind": "course",
+                "code": "AHIS 71"
+              },
+              {
+                "kind": "course",
+                "code": "ANIM 5"
+              },
+              {
+                "kind": "course",
+                "code": "ARTH C1100"
+              },
+              {
+                "kind": "course",
+                "code": "ARTH C1200"
+              },
+              {
+                "kind": "course",
+                "code": "DANCE 2"
+              },
+              {
+                "kind": "course",
+                "code": "DANCE 5"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL 55"
+              },
+              {
+                "kind": "course",
+                "code": "FILM 1"
+              },
+              {
+                "kind": "course",
+                "code": "FILM 2"
+              },
+              {
+                "kind": "course",
+                "code": "FILM 3"
+              },
+              {
+                "kind": "course",
+                "code": "FILM 6"
+              },
+              {
+                "kind": "course",
+                "code": "MUSIC 1"
+              },
+              {
+                "kind": "course",
+                "code": "MUSIC 29"
+              },
+              {
+                "kind": "course",
+                "code": "MUSIC 30"
+              },
+              {
+                "kind": "course",
+                "code": "MUSIC 31"
+              },
+              {
+                "kind": "course",
+                "code": "MUSIC 32"
+              },
+              {
+                "kind": "course",
+                "code": "MUSIC 33"
+              },
+              {
+                "kind": "course",
+                "code": "MUSIC 36"
+              },
+              {
+                "kind": "course",
+                "code": "MUSIC 37"
+              },
+              {
+                "kind": "course",
+                "code": "PHOTO 52"
+              },
+              {
+                "kind": "course",
+                "code": "TH ART 2"
+              },
+              {
+                "kind": "course",
+                "code": "TH ART 5"
+              }
+            ]
+          },
+          {
+            "kind": "chooseN",
+            "label": "Area 3B — one course in the humanities",
+            "n": 1,
+            "minUnits": 3,
+            "from": [
+              {
+                "kind": "course",
+                "code": "AHIS 18"
+              },
+              {
+                "kind": "course",
+                "code": "ASL 2"
+              },
+              {
+                "kind": "course",
+                "code": "CHNESE 2"
+              },
+              {
+                "kind": "course",
+                "code": "CHNESE 3"
+              },
+              {
+                "kind": "course",
+                "code": "COM ST 12"
+              },
+              {
+                "kind": "course",
+                "code": "ECON 15"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL 10"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL 14"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL 15"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL 17"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL 18"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL 26"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL 3"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL 34"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL 38"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL 39"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL 4"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL 40"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL 41"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL 45"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL 49"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL 5"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL 50"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL 51"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL 52"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL 53"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL 54"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL 55"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL 56"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL 57"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL 59"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL 6"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL 61"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL 62"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL 63"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL 64"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL 7"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL 8"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL 9"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL C1001"
+              },
+              {
+                "kind": "course",
+                "code": "ENGL C1002"
+              },
+              {
+                "kind": "course",
+                "code": "ENVRN 20"
+              },
+              {
+                "kind": "course",
+                "code": "FILM 5"
+              },
+              {
+                "kind": "course",
+                "code": "FILM 6"
+              },
+              {
+                "kind": "course",
+                "code": "FILM 7"
+              },
+              {
+                "kind": "course",
+                "code": "FRENCH 2"
+              },
+              {
+                "kind": "course",
+                "code": "FRENCH 3"
+              },
+              {
+                "kind": "course",
+                "code": "FRENCH 4"
+              },
+              {
+                "kind": "course",
+                "code": "FRENCH 9"
+              },
+              {
+                "kind": "course",
+                "code": "GERMAN 2"
+              },
+              {
+                "kind": "course",
+                "code": "GERMAN 3"
+              },
+              {
+                "kind": "course",
+                "code": "HEBREW 2"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 1"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 10"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 13"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 15"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 16"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 19"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 2"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 20"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 21"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 22"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 24"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 25"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 26"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 28"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 29"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 3"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 33"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 34"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 38"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 39"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 4"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 41"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 43"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 5"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 52"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 53"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 55"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 6"
+              },
+              {
+                "kind": "course",
+                "code": "HIST C1001"
+              },
+              {
+                "kind": "course",
+                "code": "HIST C1002"
+              },
+              {
+                "kind": "course",
+                "code": "HUM 9A"
+              },
+              {
+                "kind": "course",
+                "code": "ITAL 2"
+              },
+              {
+                "kind": "course",
+                "code": "ITAL 3"
+              },
+              {
+                "kind": "course",
+                "code": "JAPAN 2"
+              },
+              {
+                "kind": "course",
+                "code": "JAPAN 3"
+              },
+              {
+                "kind": "course",
+                "code": "JAPAN 4"
+              },
+              {
+                "kind": "course",
+                "code": "KOREAN 2"
+              },
+              {
+                "kind": "course",
+                "code": "KOREAN 3"
+              },
+              {
+                "kind": "course",
+                "code": "KOREAN 4"
+              },
+              {
+                "kind": "course",
+                "code": "LING 1"
+              },
+              {
+                "kind": "course",
+                "code": "PERSIN 2"
+              },
+              {
+                "kind": "course",
+                "code": "PHILOS 1"
+              },
+              {
+                "kind": "course",
+                "code": "PHILOS 10"
+              },
+              {
+                "kind": "course",
+                "code": "PHILOS 11"
+              },
+              {
+                "kind": "course",
+                "code": "PHILOS 2"
+              },
+              {
+                "kind": "course",
+                "code": "PHILOS 20"
+              },
+              {
+                "kind": "course",
+                "code": "PHILOS 22"
+              },
+              {
+                "kind": "course",
+                "code": "PHILOS 23"
+              },
+              {
+                "kind": "course",
+                "code": "PHILOS 3"
+              },
+              {
+                "kind": "course",
+                "code": "PHILOS 4"
+              },
+              {
+                "kind": "course",
+                "code": "PHILOS 5"
+              },
+              {
+                "kind": "course",
+                "code": "PHILOS 51"
+              },
+              {
+                "kind": "course",
+                "code": "POL SC 51"
+              },
+              {
+                "kind": "course",
+                "code": "REL ST 51"
+              },
+              {
+                "kind": "course",
+                "code": "RUSS 2"
+              },
+              {
+                "kind": "course",
+                "code": "SPAN 12"
+              },
+              {
+                "kind": "course",
+                "code": "SPAN 2"
+              },
+              {
+                "kind": "course",
+                "code": "SPAN 20"
+              },
+              {
+                "kind": "course",
+                "code": "SPAN 3"
+              },
+              {
+                "kind": "course",
+                "code": "SPAN 4"
+              },
+              {
+                "kind": "course",
+                "code": "SPAN 9"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "4",
+      "label": "Area 4 — Social and Behavioral Sciences",
+      "requirement": {
+        "kind": "chooseAcrossGroups",
+        "label": "Two courses from two different discipline groups",
+        "n": 2,
+        "groups": [
+          {
+            "label": "Group 1",
+            "from": [
+              {
+                "kind": "course",
+                "code": "AD JUS 1"
+              }
+            ]
+          },
+          {
+            "label": "Group 2",
+            "from": [
+              {
+                "kind": "course",
+                "code": "ANTHRO 14"
+              },
+              {
+                "kind": "course",
+                "code": "ANTHRO 19"
+              },
+              {
+                "kind": "course",
+                "code": "ANTHRO 2"
+              },
+              {
+                "kind": "course",
+                "code": "ANTHRO 20"
+              },
+              {
+                "kind": "course",
+                "code": "ANTHRO 21"
+              },
+              {
+                "kind": "course",
+                "code": "ANTHRO 22"
+              },
+              {
+                "kind": "course",
+                "code": "ANTHRO 3"
+              },
+              {
+                "kind": "course",
+                "code": "ANTHRO 4"
+              },
+              {
+                "kind": "course",
+                "code": "ANTHRO 7"
+              }
+            ]
+          },
+          {
+            "label": "Group 3",
+            "from": [
+              {
+                "kind": "course",
+                "code": "ASTRON 6"
+              }
+            ]
+          },
+          {
+            "label": "Group 4",
+            "from": [
+              {
+                "kind": "course",
+                "code": "COM ST 20"
+              },
+              {
+                "kind": "course",
+                "code": "COM ST 30"
+              },
+              {
+                "kind": "course",
+                "code": "COM ST 31"
+              },
+              {
+                "kind": "course",
+                "code": "COM ST 35"
+              },
+              {
+                "kind": "course",
+                "code": "COM ST 36"
+              },
+              {
+                "kind": "course",
+                "code": "COM ST 37"
+              },
+              {
+                "kind": "course",
+                "code": "COM ST 38"
+              },
+              {
+                "kind": "course",
+                "code": "COM ST 9"
+              }
+            ]
+          },
+          {
+            "label": "Group 5",
+            "from": [
+              {
+                "kind": "course",
+                "code": "ECE 11"
+              }
+            ]
+          },
+          {
+            "label": "Group 6",
+            "from": [
+              {
+                "kind": "course",
+                "code": "ECON 4"
+              },
+              {
+                "kind": "course",
+                "code": "ECON 5"
+              },
+              {
+                "kind": "course",
+                "code": "ECON 6"
+              },
+              {
+                "kind": "course",
+                "code": "ECON 8"
+              },
+              {
+                "kind": "course",
+                "code": "ECON C2001"
+              },
+              {
+                "kind": "course",
+                "code": "ECON C2002"
+              },
+              {
+                "kind": "course",
+                "code": "ENVRN 4"
+              },
+              {
+                "kind": "course",
+                "code": "GLOBAL 5"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 15"
+              },
+              {
+                "kind": "course",
+                "code": "POL SC 5"
+              },
+              {
+                "kind": "course",
+                "code": "WGS 8"
+              }
+            ]
+          },
+          {
+            "label": "Group 7",
+            "from": [
+              {
+                "kind": "course",
+                "code": "ETH ST 1"
+              },
+              {
+                "kind": "course",
+                "code": "ETH ST 6"
+              },
+              {
+                "kind": "course",
+                "code": "ETH ST 7"
+              },
+              {
+                "kind": "course",
+                "code": "ETH ST 8"
+              },
+              {
+                "kind": "course",
+                "code": "ETH ST 9"
+              }
+            ]
+          },
+          {
+            "label": "Group 8",
+            "from": [
+              {
+                "kind": "course",
+                "code": "ENVRN 7"
+              },
+              {
+                "kind": "course",
+                "code": "GEOG 11"
+              },
+              {
+                "kind": "course",
+                "code": "GEOG 2"
+              },
+              {
+                "kind": "course",
+                "code": "GEOG 7"
+              },
+              {
+                "kind": "course",
+                "code": "GEOG 8"
+              },
+              {
+                "kind": "course",
+                "code": "GLOBAL 11"
+              },
+              {
+                "kind": "course",
+                "code": "URBAN 8"
+              }
+            ]
+          },
+          {
+            "label": "Group 9",
+            "from": [
+              {
+                "kind": "course",
+                "code": "GLOBAL 10"
+              }
+            ]
+          },
+          {
+            "label": "Group 10",
+            "from": [
+              {
+                "kind": "course",
+                "code": "ENVRN 14"
+              },
+              {
+                "kind": "course",
+                "code": "ENVRN 32"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 10"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 14"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 27"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 32"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 42"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 47"
+              },
+              {
+                "kind": "course",
+                "code": "HIST 51"
+              },
+              {
+                "kind": "course",
+                "code": "HIST C1001"
+              },
+              {
+                "kind": "course",
+                "code": "HIST C1002"
+              }
+            ]
+          },
+          {
+            "label": "Group 11",
+            "from": [
+              {
+                "kind": "course",
+                "code": "GLOBAL 3"
+              },
+              {
+                "kind": "course",
+                "code": "MEDIA 1"
+              },
+              {
+                "kind": "course",
+                "code": "MEDIA 3"
+              },
+              {
+                "kind": "course",
+                "code": "MEDIA 4"
+              }
+            ]
+          },
+          {
+            "label": "Group 12",
+            "from": [
+              {
+                "kind": "course",
+                "code": "NUTR 7"
+              }
+            ]
+          },
+          {
+            "label": "Group 14",
+            "from": [
+              {
+                "kind": "course",
+                "code": "PHILOS 51"
+              },
+              {
+                "kind": "course",
+                "code": "PHILOS 52"
+              },
+              {
+                "kind": "course",
+                "code": "POL SC 2"
+              },
+              {
+                "kind": "course",
+                "code": "POL SC 21"
+              },
+              {
+                "kind": "course",
+                "code": "POL SC 22"
+              },
+              {
+                "kind": "course",
+                "code": "POL SC 24"
+              },
+              {
+                "kind": "course",
+                "code": "POL SC 3"
+              },
+              {
+                "kind": "course",
+                "code": "POL SC 31"
+              },
+              {
+                "kind": "course",
+                "code": "POL SC 51"
+              },
+              {
+                "kind": "course",
+                "code": "POL SC 7"
+              },
+              {
+                "kind": "course",
+                "code": "POLS C1000"
+              }
+            ]
+          },
+          {
+            "label": "Group 15",
+            "from": [
+              {
+                "kind": "course",
+                "code": "ENVRN 40"
+              },
+              {
+                "kind": "course",
+                "code": "PSYC C1000"
+              },
+              {
+                "kind": "course",
+                "code": "PSYCH 11"
+              },
+              {
+                "kind": "course",
+                "code": "PSYCH 13"
+              },
+              {
+                "kind": "course",
+                "code": "PSYCH 14"
+              },
+              {
+                "kind": "course",
+                "code": "PSYCH 19"
+              },
+              {
+                "kind": "course",
+                "code": "PSYCH 25"
+              },
+              {
+                "kind": "course",
+                "code": "PSYCH 3"
+              },
+              {
+                "kind": "course",
+                "code": "PSYCH 6"
+              },
+              {
+                "kind": "course",
+                "code": "PSYCH 7"
+              },
+              {
+                "kind": "course",
+                "code": "PSYCH 8"
+              }
+            ]
+          },
+          {
+            "label": "Group 16",
+            "from": [
+              {
+                "kind": "course",
+                "code": "SOCIOL 1"
+              },
+              {
+                "kind": "course",
+                "code": "SOCIOL 12"
+              },
+              {
+                "kind": "course",
+                "code": "SOCIOL 2"
+              },
+              {
+                "kind": "course",
+                "code": "SOCIOL 30"
+              },
+              {
+                "kind": "course",
+                "code": "SOCIOL 31"
+              },
+              {
+                "kind": "course",
+                "code": "SOCIOL 32"
+              },
+              {
+                "kind": "course",
+                "code": "SOCIOL 33"
+              },
+              {
+                "kind": "course",
+                "code": "SOCIOL 34"
+              },
+              {
+                "kind": "course",
+                "code": "SOCIOL 4"
+              }
+            ]
+          },
+          {
+            "label": "Group 17",
+            "from": [
+              {
+                "kind": "course",
+                "code": "SPAN 20"
+              }
+            ]
+          },
+          {
+            "label": "Group 18",
+            "from": [
+              {
+                "kind": "course",
+                "code": "URBAN 8"
+              }
+            ]
+          },
+          {
+            "label": "Group 19",
+            "from": [
+              {
+                "kind": "course",
+                "code": "POL SC 23"
+              },
+              {
+                "kind": "course",
+                "code": "WGS 10"
+              },
+              {
+                "kind": "course",
+                "code": "WGS 20"
+              },
+              {
+                "kind": "course",
+                "code": "WGS 30"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "5A",
+      "label": "Area 5A — Physical Science",
+      "requirement": {
+        "kind": "chooseN",
+        "label": "One course in the physical sciences",
+        "n": 1,
+        "minUnits": 3,
+        "from": [
+          {
+            "kind": "course",
+            "code": "ASTRON 1"
+          },
+          {
+            "kind": "course",
+            "code": "ASTRON 2"
+          },
+          {
+            "kind": "course",
+            "code": "ASTRON 3"
+          },
+          {
+            "kind": "course",
+            "code": "ASTRON 4"
+          },
+          {
+            "kind": "course",
+            "code": "ASTRON 5"
+          },
+          {
+            "kind": "course",
+            "code": "ASTRON 7"
+          },
+          {
+            "kind": "course",
+            "code": "ASTRON 8"
+          },
+          {
+            "kind": "course",
+            "code": "ASTRON 9"
+          },
+          {
+            "kind": "course",
+            "code": "CHEM 10"
+          },
+          {
+            "kind": "course",
+            "code": "CHEM 11"
+          },
+          {
+            "kind": "course",
+            "code": "CHEM 12"
+          },
+          {
+            "kind": "course",
+            "code": "CHEM 19"
+          },
+          {
+            "kind": "course",
+            "code": "CHEM 21"
+          },
+          {
+            "kind": "course",
+            "code": "CHEM 22"
+          },
+          {
+            "kind": "course",
+            "code": "CHEM 9"
+          },
+          {
+            "kind": "course",
+            "code": "GEOG 1"
+          },
+          {
+            "kind": "course",
+            "code": "GEOG 3"
+          },
+          {
+            "kind": "course",
+            "code": "GEOG 5"
+          },
+          {
+            "kind": "course",
+            "code": "GEOG 9"
+          },
+          {
+            "kind": "course",
+            "code": "GEOL 1"
+          },
+          {
+            "kind": "course",
+            "code": "GEOL 10"
+          },
+          {
+            "kind": "course",
+            "code": "GEOL 12"
+          },
+          {
+            "kind": "course",
+            "code": "GEOL 3"
+          },
+          {
+            "kind": "course",
+            "code": "GEOL 31"
+          },
+          {
+            "kind": "course",
+            "code": "GEOL 4"
+          },
+          {
+            "kind": "course",
+            "code": "GEOL 5"
+          },
+          {
+            "kind": "course",
+            "code": "GEOL 6"
+          },
+          {
+            "kind": "course",
+            "code": "GEOL 9"
+          },
+          {
+            "kind": "course",
+            "code": "PHYSCS 12"
+          },
+          {
+            "kind": "course",
+            "code": "PHYSCS 14"
+          },
+          {
+            "kind": "course",
+            "code": "PHYSCS 21"
+          },
+          {
+            "kind": "course",
+            "code": "PHYSCS 22"
+          },
+          {
+            "kind": "course",
+            "code": "PHYSCS 23"
+          },
+          {
+            "kind": "course",
+            "code": "PHYSCS 6"
+          },
+          {
+            "kind": "course",
+            "code": "PHYSCS 7"
+          },
+          {
+            "kind": "course",
+            "code": "PHYSCS 8"
+          },
+          {
+            "kind": "course",
+            "code": "PHYSCS 9"
+          }
+        ]
+      }
+    },
+    {
+      "id": "5B",
+      "label": "Area 5B — Biological Science",
+      "requirement": {
+        "kind": "chooseN",
+        "label": "One course in the biological sciences",
+        "n": 1,
+        "minUnits": 3,
+        "from": [
+          {
+            "kind": "course",
+            "code": "ANATMY 1"
+          },
+          {
+            "kind": "course",
+            "code": "ANTHRO 1"
+          },
+          {
+            "kind": "course",
+            "code": "ANTHRO 5"
+          },
+          {
+            "kind": "course",
+            "code": "ANTHRO 9"
+          },
+          {
+            "kind": "course",
+            "code": "BIOL 10"
+          },
+          {
+            "kind": "course",
+            "code": "BIOL 15"
+          },
+          {
+            "kind": "course",
+            "code": "BIOL 15N"
+          },
+          {
+            "kind": "course",
+            "code": "BIOL 2"
+          },
+          {
+            "kind": "course",
+            "code": "BIOL 21"
+          },
+          {
+            "kind": "course",
+            "code": "BIOL 22"
+          },
+          {
+            "kind": "course",
+            "code": "BIOL 3"
+          },
+          {
+            "kind": "course",
+            "code": "BIOL 9"
+          },
+          {
+            "kind": "course",
+            "code": "BOTANY 1"
+          },
+          {
+            "kind": "course",
+            "code": "MCRBIO 1"
+          },
+          {
+            "kind": "course",
+            "code": "PHYS 3"
+          },
+          {
+            "kind": "course",
+            "code": "PSYCH 2"
+          },
+          {
+            "kind": "course",
+            "code": "ZOOL 5"
+          }
+        ]
+      }
+    },
+    {
+      "id": "5C",
+      "label": "Area 5C — Laboratory Component",
+      "overlapsWith": [
+        "5A",
+        "5B"
+      ],
+      "requirement": {
+        "kind": "chooseN",
+        "label": "One laboratory course (may be the same course used for 5A or 5B)",
+        "n": 1,
+        "from": [
+          {
+            "kind": "course",
+            "code": "ANATMY 1"
+          },
+          {
+            "kind": "course",
+            "code": "ANTHRO 5"
+          },
+          {
+            "kind": "course",
+            "code": "ASTRON 3"
+          },
+          {
+            "kind": "course",
+            "code": "BIOL 10"
+          },
+          {
+            "kind": "course",
+            "code": "BIOL 15"
+          },
+          {
+            "kind": "course",
+            "code": "BIOL 21"
+          },
+          {
+            "kind": "course",
+            "code": "BIOL 22"
+          },
+          {
+            "kind": "course",
+            "code": "BIOL 3"
+          },
+          {
+            "kind": "course",
+            "code": "BOTANY 1"
+          },
+          {
+            "kind": "course",
+            "code": "CHEM 10"
+          },
+          {
+            "kind": "course",
+            "code": "CHEM 11"
+          },
+          {
+            "kind": "course",
+            "code": "CHEM 12"
+          },
+          {
+            "kind": "course",
+            "code": "CHEM 19"
+          },
+          {
+            "kind": "course",
+            "code": "CHEM 21"
+          },
+          {
+            "kind": "course",
+            "code": "CHEM 24"
+          },
+          {
+            "kind": "course",
+            "code": "CHEM 9"
+          },
+          {
+            "kind": "course",
+            "code": "GEOG 5"
+          },
+          {
+            "kind": "course",
+            "code": "GEOL 12"
+          },
+          {
+            "kind": "course",
+            "code": "GEOL 4"
+          },
+          {
+            "kind": "course",
+            "code": "GEOL 5"
+          },
+          {
+            "kind": "course",
+            "code": "GEOL 6"
+          },
+          {
+            "kind": "course",
+            "code": "MCRBIO 1"
+          },
+          {
+            "kind": "course",
+            "code": "PHYS 3"
+          },
+          {
+            "kind": "course",
+            "code": "PHYSCS 14"
+          },
+          {
+            "kind": "course",
+            "code": "PHYSCS 21"
+          },
+          {
+            "kind": "course",
+            "code": "PHYSCS 22"
+          },
+          {
+            "kind": "course",
+            "code": "PHYSCS 6"
+          },
+          {
+            "kind": "course",
+            "code": "PHYSCS 7"
+          },
+          {
+            "kind": "course",
+            "code": "PHYSCS 8"
+          },
+          {
+            "kind": "course",
+            "code": "ZOOL 5"
+          }
+        ]
+      }
+    },
+    {
+      "id": "6",
+      "label": "Area 6 — Ethnic Studies",
+      "requirement": {
+        "kind": "chooseN",
+        "label": "One course in ethnic studies",
+        "n": 1,
+        "minUnits": 3,
+        "from": [
+          {
+            "kind": "course",
+            "code": "ETH ST 1"
+          },
+          {
+            "kind": "course",
+            "code": "ETH ST 7"
+          }
+        ]
+      }
+    }
+  ]
+}

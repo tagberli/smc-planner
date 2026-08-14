@@ -1,29 +1,27 @@
 "use client";
 
-import { ArrowLeft, Download, RotateCcw } from "lucide-react";
+import { ArrowLeft, Download, Info, RotateCcw, TriangleAlert } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
-import { findMajor, findTargetSchool, type Course } from "@/lib/requirements";
+import {
+  collectChoices,
+  collectRequiredCourseCodes,
+  findMajor,
+  findTarget,
+  gePattern,
+  getCourse,
+  targetLabel,
+  tryGetCourse,
+} from "@/lib/requirements";
+import { TERM_TYPES, type Course, type Requirement, type TermType } from "@/lib/types";
 
-type RequirementType = "major" | "ge";
-type Semester = "fall" | "winter" | "spring" | "summer";
-
-type PlannerCourse = Course & {
-  id: string;
-  requirementType: RequirementType;
+const termLabels: Record<TermType, string> = {
+  fall: "Fall",
+  winter: "Winter",
+  spring: "Spring",
+  summer: "Summer",
 };
-
-const semesters: Array<{ key: Semester; label: string }> = [
-  { key: "fall", label: "Fall" },
-  { key: "winter", label: "Winter" },
-  { key: "spring", label: "Spring" },
-  { key: "summer", label: "Summer" },
-];
-
-function buildCourseId(requirementType: RequirementType, course: Course, index: number) {
-  return `${requirementType}-${course.code}-${index}`.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-}
 
 function formatCourse(course: Course) {
   return `${course.code} - ${course.title} (${course.units} units)`;
@@ -52,123 +50,111 @@ function downloadTextFile(filename: string, text: string) {
 
 export function PlanClient() {
   const searchParams = useSearchParams();
-  const majorName = searchParams.get("major");
-  const schoolName = searchParams.get("school");
-  const major = findMajor(majorName);
-  const targetSchool = findTargetSchool(major, schoolName);
-  const [completedCourseIds, setCompletedCourseIds] = useState<Set<string>>(new Set());
-  const [assignments, setAssignments] = useState<Partial<Record<string, Semester>>>({});
+  const major = findMajor(searchParams.get("major"));
+  const target = findTarget(major, searchParams.get("school"));
+  const [completedCodes, setCompletedCodes] = useState<Set<string>>(new Set());
+  const [assignments, setAssignments] = useState<Partial<Record<string, TermType>>>({});
 
-  const courses = useMemo<PlannerCourse[]>(() => {
-    if (!targetSchool) {
+  // Only the courses required no matter what the student chooses. Choice nodes
+  // are shown separately until the picker lands, so the planner never implies a
+  // student must take every option in a "choose one of fifteen" list.
+  const requiredCourses = useMemo<Course[]>(() => {
+    if (!target) {
       return [];
     }
 
-    const majorCourses = targetSchool.requiredCourses.map((course, index) => ({
-      ...course,
-      id: buildCourseId("major", course, index),
-      requirementType: "major" as const,
-    }));
+    return collectRequiredCourseCodes(target.requirement).map(getCourse);
+  }, [target]);
 
-    const geCourses = targetSchool.geRequirements.map((course, index) => ({
-      ...course,
-      id: buildCourseId("ge", course, index),
-      requirementType: "ge" as const,
-    }));
+  const majorChoices = useMemo<Requirement[]>(
+    () => (target ? collectChoices(target.requirement) : []),
+    [target],
+  );
 
-    return [...majorCourses, ...geCourses];
-  }, [targetSchool]);
+  const completedCourses = requiredCourses.filter((course) => completedCodes.has(course.code));
+  const remainingCourses = requiredCourses.filter((course) => !completedCodes.has(course.code));
 
-  const majorCourses = courses.filter((course) => course.requirementType === "major");
-  const geCourses = courses.filter((course) => course.requirementType === "ge");
-  const completedCourses = courses.filter((course) => completedCourseIds.has(course.id));
-  const remainingCourses = courses.filter((course) => !completedCourseIds.has(course.id));
-  const plannedCourses = semesters.reduce(
-    (plans, semester) => ({
+  const plannedCourses = TERM_TYPES.reduce(
+    (plans, term) => ({
       ...plans,
-      [semester.key]: remainingCourses.filter(
-        (course) => assignments[course.id] === semester.key,
-      ),
+      [term]: remainingCourses.filter((course) => assignments[course.code] === term),
     }),
-    {} as Record<Semester, PlannerCourse[]>,
+    {} as Record<TermType, Course[]>,
   );
 
-  const semesterUnits = semesters.reduce(
-    (totals, semester) => ({
+  const termUnits = TERM_TYPES.reduce(
+    (totals, term) => ({
       ...totals,
-      [semester.key]: plannedCourses[semester.key].reduce(
-        (total, course) => total + course.units,
-        0,
-      ),
+      [term]: plannedCourses[term].reduce((total, course) => total + course.units, 0),
     }),
-    {} as Record<Semester, number>,
+    {} as Record<TermType, number>,
   );
 
-  function toggleCompleted(courseId: string) {
-    const shouldMarkCompleted = !completedCourseIds.has(courseId);
+  function toggleCompleted(code: string) {
+    const shouldMarkCompleted = !completedCodes.has(code);
 
-    setCompletedCourseIds((currentCourseIds) => {
-      const nextCourseIds = new Set(currentCourseIds);
-
-      if (nextCourseIds.has(courseId)) {
-        nextCourseIds.delete(courseId);
-      } else {
-        nextCourseIds.add(courseId);
-      }
-
-      return nextCourseIds;
+    setCompletedCodes((current) => {
+      const next = new Set(current);
+      next.has(code) ? next.delete(code) : next.add(code);
+      return next;
     });
 
     if (shouldMarkCompleted) {
-      setAssignments((currentAssignments) => {
-        const nextAssignments = { ...currentAssignments };
-        delete nextAssignments[courseId];
-        return nextAssignments;
+      setAssignments((current) => {
+        const next = { ...current };
+        delete next[code];
+        return next;
       });
     }
   }
 
-  function assignCourse(courseId: string, semester: Semester) {
-    setAssignments((currentAssignments) => ({
-      ...currentAssignments,
-      [courseId]: semester,
-    }));
+  function assignCourse(code: string, term: TermType) {
+    setAssignments((current) => ({ ...current, [code]: term }));
   }
 
-  function clearAssignment(courseId: string) {
-    setAssignments((currentAssignments) => {
-      const nextAssignments = { ...currentAssignments };
-      delete nextAssignments[courseId];
-      return nextAssignments;
+  function clearAssignment(code: string) {
+    setAssignments((current) => {
+      const next = { ...current };
+      delete next[code];
+      return next;
     });
   }
 
   function exportPlan() {
-    const safeMajorName = major?.name ?? "Unknown Major";
-    const safeSchoolName = targetSchool?.school ?? "Unknown School";
-    const unassignedCourses = remainingCourses.filter((course) => !assignments[course.id]);
-    const semesterSummaries = semesters.flatMap((semester) => [
-      `${semester.label} Plan (${semesterUnits[semester.key]} units):`,
-      courseListText(plannedCourses[semester.key]),
+    if (!major || !target) {
+      return;
+    }
+
+    const unassigned = remainingCourses.filter((course) => !assignments[course.code]);
+    const termSummaries = TERM_TYPES.flatMap((term) => [
+      `${termLabels[term]} Plan (${termUnits[term]} units):`,
+      courseListText(plannedCourses[term]),
       "",
     ]);
 
     const summary = [
       "SMC Ed Planner Summary",
       "",
-      `Major: ${safeMajorName}`,
-      `Target School: ${safeSchoolName}`,
+      `Major: ${major.name}`,
+      `Target: ${targetLabel(target)}`,
+      `Requirements source: ${target.provenance.sourceUrl} (${target.provenance.catalogYear}, verified ${target.provenance.verifiedOn})`,
+      "",
+      "This plan is not advice. Confirm it against the official ASSIST agreement",
+      "and with an SMC counselor before enrolling.",
       "",
       "Completed Courses:",
       courseListText(completedCourses),
       "",
-      ...semesterSummaries,
+      ...termSummaries,
       "Unassigned Remaining Courses:",
-      courseListText(unassignedCourses),
+      courseListText(unassigned),
+      "",
+      "General education (Cal-GETC) is not yet included in this export — the",
+      "eligible-course lists are still being imported.",
       "",
     ].join("\n");
 
-    const filename = `smc-ed-plan-${safeMajorName}-${safeSchoolName}`
+    const filename = `smc-ed-plan-${major.slug}-${targetLabel(target)}`
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/^-|-$/g, "");
@@ -176,7 +162,7 @@ export function PlanClient() {
     downloadTextFile(`${filename}.txt`, summary);
   }
 
-  if (!major || !targetSchool) {
+  if (!major || !target) {
     return (
       <main className="min-h-screen bg-slate-50">
         <section className="mx-auto flex min-h-screen max-w-3xl flex-col justify-center px-4 py-10">
@@ -196,6 +182,8 @@ export function PlanClient() {
     );
   }
 
+  const isUnverified = target.provenance.verifiedOn === "1970-01-01";
+
   return (
     <main className="min-h-screen bg-slate-50">
       <section className="mx-auto max-w-6xl px-4 py-6 sm:px-6 lg:py-8">
@@ -209,7 +197,7 @@ export function PlanClient() {
               Back
             </Link>
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">
-              {targetSchool.school}
+              {targetLabel(target)}
             </p>
             <h1 className="mt-2 text-3xl font-semibold text-slate-950 sm:text-4xl">
               {major.name}
@@ -226,19 +214,28 @@ export function PlanClient() {
           </button>
         </div>
 
+        <Provenance
+          sourceUrl={target.provenance.sourceUrl}
+          catalogYear={target.provenance.catalogYear}
+          verifiedOn={target.provenance.verifiedOn}
+          isUnverified={isUnverified}
+        />
+
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.75fr)]">
           <div className="space-y-8">
             <RequirementSection
               title="Major Requirements"
-              courses={majorCourses}
-              completedCourseIds={completedCourseIds}
+              courses={requiredCourses}
+              completedCodes={completedCodes}
               onToggleCompleted={toggleCompleted}
             />
-            <RequirementSection
-              title="GE Requirements"
-              courses={geCourses}
-              completedCourseIds={completedCourseIds}
-              onToggleCompleted={toggleCompleted}
+            {majorChoices.length > 0 ? (
+              <ChoiceSection title="Major Electives" choices={majorChoices} />
+            ) : null}
+            <ChoiceSection
+              title="General Education (Cal-GETC)"
+              choices={gePattern.areas.map((area) => area.requirement)}
+              labels={gePattern.areas.map((area) => area.label)}
             />
             <RemainingCourses
               courses={remainingCourses}
@@ -251,17 +248,15 @@ export function PlanClient() {
           <section>
             <div className="mb-3 flex items-center justify-between">
               <h2 className="text-xl font-semibold text-slate-950">Semester Planner</h2>
-              <span className="text-sm text-slate-500">
-                {remainingCourses.length} remaining
-              </span>
+              <span className="text-sm text-slate-500">{remainingCourses.length} remaining</span>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
-              {semesters.map((semester) => (
-                <SemesterColumn
-                  key={semester.key}
-                  title={semester.label}
-                  courses={plannedCourses[semester.key]}
-                  units={semesterUnits[semester.key]}
+              {TERM_TYPES.map((term) => (
+                <TermColumn
+                  key={term}
+                  title={termLabels[term]}
+                  courses={plannedCourses[term]}
+                  units={termUnits[term]}
                   onClear={clearAssignment}
                 />
               ))}
@@ -273,38 +268,85 @@ export function PlanClient() {
   );
 }
 
+function Provenance({
+  sourceUrl,
+  catalogYear,
+  verifiedOn,
+  isUnverified,
+}: {
+  sourceUrl: string;
+  catalogYear: string;
+  verifiedOn: string;
+  isUnverified: boolean;
+}) {
+  return (
+    <div
+      className={`mb-8 flex gap-3 rounded-lg border p-4 text-sm ${
+        isUnverified
+          ? "border-amber-300 bg-amber-50 text-amber-900"
+          : "border-slate-200 bg-white text-slate-600"
+      }`}
+    >
+      {isUnverified ? (
+        <TriangleAlert aria-hidden="true" size={18} className="mt-0.5 shrink-0" />
+      ) : (
+        <Info aria-hidden="true" size={18} className="mt-0.5 shrink-0" />
+      )}
+      <div>
+        {isUnverified ? (
+          <p className="font-semibold">
+            These requirements have not been verified against an ASSIST agreement.
+          </p>
+        ) : (
+          <p>
+            Catalog year {catalogYear}, last verified {verifiedOn}.{" "}
+            <a href={sourceUrl} className="font-semibold underline" rel="noreferrer noopener">
+              View the source agreement
+            </a>
+            .
+          </p>
+        )}
+        <p className={isUnverified ? "mt-1" : "mt-1 text-slate-500"}>
+          This planner is not academic advice. Confirm every requirement with an SMC counselor
+          and the official agreement on ASSIST before enrolling.
+        </p>
+      </div>
+    </div>
+  );
+}
+
 function RequirementSection({
   title,
   courses,
-  completedCourseIds,
+  completedCodes,
   onToggleCompleted,
 }: {
   title: string;
-  courses: PlannerCourse[];
-  completedCourseIds: Set<string>;
-  onToggleCompleted: (courseId: string) => void;
+  courses: Course[];
+  completedCodes: Set<string>;
+  onToggleCompleted: (code: string) => void;
 }) {
   return (
     <section>
       <div className="mb-3 flex items-center justify-between">
         <h2 className="text-xl font-semibold text-slate-950">{title}</h2>
         <span className="text-sm text-slate-500">
-          {courses.filter((course) => completedCourseIds.has(course.id)).length}/{courses.length}
+          {courses.filter((course) => completedCodes.has(course.code)).length}/{courses.length}
         </span>
       </div>
       <div className="space-y-3">
         {courses.map((course) => {
-          const isCompleted = completedCourseIds.has(course.id);
+          const isCompleted = completedCodes.has(course.code);
 
           return (
             <label
-              key={course.id}
+              key={course.code}
               className="flex cursor-pointer gap-3 rounded-lg border border-slate-200 bg-white p-4 shadow-sm transition hover:border-teal-300"
             >
               <input
                 type="checkbox"
                 checked={isCompleted}
-                onChange={() => onToggleCompleted(course.id)}
+                onChange={() => onToggleCompleted(course.code)}
                 className="mt-1 h-4 w-4 rounded border-slate-300 text-teal-700 focus:ring-teal-600"
               />
               <span>
@@ -328,16 +370,90 @@ function RequirementSection({
   );
 }
 
+/**
+ * Requirements the student still has to choose within. Read-only for now: the
+ * picker arrives with the planner UX work. Showing them as unresolved is the
+ * point — the previous build silently omitted every choice-based requirement.
+ */
+function ChoiceSection({
+  title,
+  choices,
+  labels,
+}: {
+  title: string;
+  choices: Requirement[];
+  labels?: string[];
+}) {
+  return (
+    <section>
+      <h2 className="mb-3 text-xl font-semibold text-slate-950">{title}</h2>
+      <div className="space-y-3">
+        {choices.map((choice, index) => (
+          <ChoiceCard key={index} requirement={choice} heading={labels?.[index]} />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function ChoiceCard({ requirement, heading }: { requirement: Requirement; heading?: string }) {
+  if (requirement.kind === "course") {
+    const course = tryGetCourse(requirement.code);
+    return (
+      <article className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+        <p className="text-sm font-semibold text-slate-950">{requirement.code}</p>
+        {course ? <p className="text-sm text-slate-600">{course.title}</p> : null}
+      </article>
+    );
+  }
+
+  if (requirement.kind === "all") {
+    return (
+      <article className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+        {heading ? <p className="text-sm font-semibold text-slate-950">{heading}</p> : null}
+        <p className="text-sm text-slate-600">{requirement.label}</p>
+        <div className="mt-3 space-y-3 border-l-2 border-slate-100 pl-3">
+          {requirement.of.map((child, index) => (
+            <ChoiceCard key={index} requirement={child} />
+          ))}
+        </div>
+      </article>
+    );
+  }
+
+  const optionCount =
+    requirement.kind === "chooseN"
+      ? requirement.from.length
+      : requirement.groups.reduce((total, group) => total + group.from.length, 0);
+
+  return (
+    <article className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+      {heading ? <p className="text-sm font-semibold text-slate-950">{heading}</p> : null}
+      <p className="text-sm text-slate-600">{requirement.label}</p>
+      <div className="mt-2 flex flex-wrap items-center gap-2">
+        <span className="rounded-full bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-600">
+          choose {requirement.n} of {optionCount}
+        </span>
+        {requirement.incomplete ? (
+          <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-800">
+            course list incomplete
+          </span>
+        ) : null}
+      </div>
+    </article>
+  );
+}
+
 function RemainingCourses({
   courses,
   assignments,
   onAssign,
   onClear,
 }: {
-  courses: PlannerCourse[];
-  assignments: Partial<Record<string, Semester>>;
-  onAssign: (courseId: string, semester: Semester) => void;
-  onClear: (courseId: string) => void;
+  courses: Course[];
+  assignments: Partial<Record<string, TermType>>;
+  onAssign: (code: string, term: TermType) => void;
+  onClear: (code: string) => void;
 }) {
   return (
     <section>
@@ -353,36 +469,34 @@ function RemainingCourses({
         ) : (
           courses.map((course) => (
             <article
-              key={course.id}
+              key={course.code}
               className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm"
             >
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <p className="text-sm font-semibold text-slate-950">{course.code}</p>
                   <p className="text-sm text-slate-600">{course.title}</p>
-                  <p className="mt-1 text-xs font-medium text-slate-500">
-                    {course.units} units
-                  </p>
+                  <p className="mt-1 text-xs font-medium text-slate-500">{course.units} units</p>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {semesters.map((semester) => (
+                  {TERM_TYPES.map((term) => (
                     <button
-                      key={semester.key}
+                      key={term}
                       type="button"
-                      onClick={() => onAssign(course.id, semester.key)}
+                      onClick={() => onAssign(course.code, term)}
                       className={`h-9 rounded-md border px-3 text-sm font-semibold transition ${
-                        assignments[course.id] === semester.key
+                        assignments[course.code] === term
                           ? "border-teal-700 bg-teal-700 text-white"
                           : "border-slate-300 bg-white text-slate-700 hover:border-teal-500 hover:text-teal-800"
                       }`}
                     >
-                      {semester.label}
+                      {termLabels[term]}
                     </button>
                   ))}
-                  {assignments[course.id] ? (
+                  {assignments[course.code] ? (
                     <button
                       type="button"
-                      onClick={() => onClear(course.id)}
+                      onClick={() => onClear(course.code)}
                       className="inline-flex h-9 items-center justify-center gap-1 rounded-md border border-slate-300 px-3 text-sm font-semibold text-slate-600 transition hover:border-slate-400 hover:text-slate-950"
                     >
                       <RotateCcw aria-hidden="true" size={16} />
@@ -399,16 +513,16 @@ function RemainingCourses({
   );
 }
 
-function SemesterColumn({
+function TermColumn({
   title,
   courses,
   units,
   onClear,
 }: {
   title: string;
-  courses: PlannerCourse[];
+  courses: Course[];
   units: number;
-  onClear: (courseId: string) => void;
+  onClear: (code: string) => void;
 }) {
   return (
     <div className="min-h-64 rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
@@ -424,18 +538,16 @@ function SemesterColumn({
       ) : (
         <div className="space-y-3">
           {courses.map((course) => (
-            <article key={course.id} className="rounded-md border border-slate-200 p-3">
+            <article key={course.code} className="rounded-md border border-slate-200 p-3">
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <p className="text-sm font-semibold text-slate-950">{course.code}</p>
                   <p className="text-sm text-slate-600">{course.title}</p>
-                  <p className="mt-1 text-xs font-medium text-slate-500">
-                    {course.units} units
-                  </p>
+                  <p className="mt-1 text-xs font-medium text-slate-500">{course.units} units</p>
                 </div>
                 <button
                   type="button"
-                  onClick={() => onClear(course.id)}
+                  onClick={() => onClear(course.code)}
                   className="rounded-md border border-slate-300 px-2 py-1 text-xs font-semibold text-slate-600 transition hover:border-slate-400 hover:text-slate-950"
                 >
                   Remove

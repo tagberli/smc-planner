@@ -1,0 +1,70 @@
+{
+  "name": "Economics",
+  "slug": "economics",
+  "targets": [
+    {
+      "school": "UCLA",
+      "degree": "B.A.",
+      "provenance": {
+        "sourceUrl": "https://assist.org/",
+        "catalogYear": "2026-2027",
+        "verifiedOn": "1970-01-01",
+        "notes": "UNVERIFIED. Migrated from the pre-existing hand-entered list; no source agreement was recorded. Replace sourceUrl with the specific ASSIST agreement URL and set verifiedOn after checking it against ASSIST."
+      },
+      "requirement": {
+        "kind": "all",
+        "label": "Major preparation",
+        "of": [
+          {
+            "kind": "course",
+            "code": "ECON C2001"
+          },
+          {
+            "kind": "course",
+            "code": "ECON C2002"
+          },
+          {
+            "kind": "course",
+            "code": "MATH 7"
+          },
+          {
+            "kind": "course",
+            "code": "MATH 8"
+          }
+        ]
+      }
+    },
+    {
+      "school": "UCB",
+      "degree": "B.A.",
+      "provenance": {
+        "sourceUrl": "https://assist.org/",
+        "catalogYear": "2026-2027",
+        "verifiedOn": "1970-01-01",
+        "notes": "UNVERIFIED. Migrated from the pre-existing hand-entered list; no source agreement was recorded. Replace sourceUrl with the specific ASSIST agreement URL and set verifiedOn after checking it against ASSIST."
+      },
+      "requirement": {
+        "kind": "all",
+        "label": "Major preparation",
+        "of": [
+          {
+            "kind": "course",
+            "code": "ECON C2001"
+          },
+          {
+            "kind": "course",
+            "code": "ECON C2002"
+          },
+          {
+            "kind": "course",
+            "code": "MATH 7"
+          },
+          {
+            "kind": "course",
+            "code": "MATH 8"
+          }
+        ]
+      }
+    }
+  ]
+}

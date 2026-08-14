@@ -3,33 +3,30 @@
 import { ArrowRight } from "lucide-react";
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-import { requirements } from "@/lib/requirements";
+import { majors, targetLabel } from "@/lib/requirements";
 
 export function HomePlanner() {
   const router = useRouter();
-  const [selectedMajor, setSelectedMajor] = useState(requirements.majors[0]?.name ?? "");
+  const [selectedSlug, setSelectedSlug] = useState(majors[0]?.slug ?? "");
 
-  const targetSchools = useMemo(() => {
-    return (
-      requirements.majors.find((major) => major.name === selectedMajor)?.targetSchools ?? []
-    );
-  }, [selectedMajor]);
+  const targets = useMemo(
+    () => majors.find((major) => major.slug === selectedSlug)?.targets ?? [],
+    [selectedSlug],
+  );
 
-  const [selectedSchool, setSelectedSchool] = useState(targetSchools[0]?.school ?? "");
+  const [selectedTarget, setSelectedTarget] = useState(
+    targets[0] ? targetLabel(targets[0]) : "",
+  );
 
-  function handleMajorChange(majorName: string) {
-    const schoolsForMajor =
-      requirements.majors.find((major) => major.name === majorName)?.targetSchools ?? [];
+  function handleMajorChange(slug: string) {
+    const nextTargets = majors.find((major) => major.slug === slug)?.targets ?? [];
 
-    setSelectedMajor(majorName);
-    setSelectedSchool(schoolsForMajor[0]?.school ?? "");
+    setSelectedSlug(slug);
+    setSelectedTarget(nextTargets[0] ? targetLabel(nextTargets[0]) : "");
   }
 
   function startPlanning() {
-    const params = new URLSearchParams({
-      major: selectedMajor,
-      school: selectedSchool,
-    });
+    const params = new URLSearchParams({ major: selectedSlug, school: selectedTarget });
 
     router.push(`/plan?${params.toString()}`);
   }
@@ -53,12 +50,12 @@ export function HomePlanner() {
           <label className="block">
             <span className="text-sm font-medium text-slate-700">Major</span>
             <select
-              value={selectedMajor}
+              value={selectedSlug}
               onChange={(event) => handleMajorChange(event.target.value)}
               className="mt-2 h-11 w-full rounded-md border border-slate-300 bg-white px-3 text-sm text-slate-950 outline-none transition focus:border-teal-600 focus:ring-2 focus:ring-teal-100"
             >
-              {requirements.majors.map((major) => (
-                <option key={major.name} value={major.name}>
+              {majors.map((major) => (
+                <option key={major.slug} value={major.slug}>
                   {major.name}
                 </option>
               ))}
@@ -68,13 +65,13 @@ export function HomePlanner() {
           <label className="block">
             <span className="text-sm font-medium text-slate-700">Target School</span>
             <select
-              value={selectedSchool}
-              onChange={(event) => setSelectedSchool(event.target.value)}
+              value={selectedTarget}
+              onChange={(event) => setSelectedTarget(event.target.value)}
               className="mt-2 h-11 w-full rounded-md border border-slate-300 bg-white px-3 text-sm text-slate-950 outline-none transition focus:border-teal-600 focus:ring-2 focus:ring-teal-100"
             >
-              {targetSchools.map((targetSchool) => (
-                <option key={targetSchool.school} value={targetSchool.school}>
-                  {targetSchool.school}
+              {targets.map((target) => (
+                <option key={targetLabel(target)} value={targetLabel(target)}>
+                  {targetLabel(target)}
                 </option>
               ))}
             </select>
@@ -83,13 +80,19 @@ export function HomePlanner() {
           <button
             type="button"
             onClick={startPlanning}
-            disabled={!selectedMajor || !selectedSchool}
+            disabled={!selectedSlug || !selectedTarget}
             className="inline-flex h-11 items-center justify-center gap-2 rounded-md bg-slate-950 px-4 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-300"
           >
             Start Planning
             <ArrowRight aria-hidden="true" size={18} />
           </button>
         </div>
+
+        <p className="mt-6 max-w-2xl text-sm leading-6 text-slate-500">
+          Requirement data is a work in progress and is not a substitute for advice from an SMC
+          counselor. Confirm every plan against the official agreement on ASSIST before you
+          enroll.
+        </p>
       </section>
     </main>
   );
